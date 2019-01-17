@@ -1,10 +1,8 @@
 <template>
     <section class="list">
         <ul>
-            <ItemList />
-            <ItemList />
-            <ItemList />
-            <ItemList />
+            <ItemList v-for="person in persons" :key="person.id" :person="person"/>
+            <li v-if="persons.length == 0">Não há dados</li>
         </ul>
     </section>
 </template>
@@ -13,7 +11,15 @@
 import ItemList from './ItemList.vue'
 export default {
     name: 'list-itens',
-    components: {ItemList}
+    props: {
+        persons: {
+            type: Array,
+            required: true,
+            default: []                    
+        }
+    },
+    components: {ItemList},
+    
 }
 </script>
 
