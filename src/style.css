@@ -12,7 +12,7 @@
 body{
     background:#9cf4df;
     height: 100vh;
-    width: 100vw;
+    width: 100%;
 }
 #app{
     display: flex;

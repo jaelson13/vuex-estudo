@@ -1,7 +1,7 @@
 <template>
     <section class="list">
         <ul>
-            <ItemList v-for="person in persons" :key="person.id" :person="person"/>
+            <ItemList v-for="person in persons" :key="person.id" :person="person" @removeItem="removeItemArray"/>
             <li v-if="persons.length == 0">Não há dados</li>
         </ul>
     </section>
@@ -14,12 +14,15 @@ export default {
     props: {
         persons: {
             type: Array,
-            required: true,
-            default: []                    
+            required: true                  
         }
     },
     components: {ItemList},
-    
+    methods: {
+        removeItemArray(person){
+            this.persons.splice(this.persons.indexOf(person),1)
+        }
+    }
 }
 </script>
 

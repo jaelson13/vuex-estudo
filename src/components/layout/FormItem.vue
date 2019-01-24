@@ -1,6 +1,6 @@
 <template>
     <form>        
-        <input v-model="name" type="text" placeholder="Your name...">
+        <input v-model.trim="name" type="text" placeholder="Your name...">
         <input @click.prevent="sendPerson" type="submit" value="Add">        
     </form>
 </template>
@@ -16,7 +16,7 @@ export default {
     },
     methods: {
         sendPerson(){
-            if(this.name && this.name.charAt(0) != ' '){
+            if(this.name){
                 this.$emit('addPerson', {id: uuidv1(), name: this.name})
                 this.name = ''
             }else{

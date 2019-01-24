@@ -1,14 +1,19 @@
 <template>
     <li>
        <h4>{{person.name}}</h4>
-       <a href=""><i class="fas fa-trash-alt"></i></a>
+       <a href="" @click.prevent="sendRemove"><i class="fas fa-trash-alt"></i></a>
     </li>
 </template>
 
 <script>
 export default {
     name: 'item-list',
-    props: ['person']
+    props: ['person'],
+    methods: {
+        sendRemove(){
+            this.$emit('removeItem', this.person)
+        }
+    }
 }
 </script>
 
