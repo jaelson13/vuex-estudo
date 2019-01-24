@@ -6,12 +6,17 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex'
+
 export default {
     name: 'item-list',
     props: ['person'],
     methods: {
+        ...mapActions([
+            'removePerson'
+        ]),
         sendRemove(){
-            this.$emit('removeItem', this.person)
+            this.removePerson(this.person)
         }
     }
 }

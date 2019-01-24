@@ -1,27 +1,23 @@
 <template>
     <section class="list">
         <ul>
-            <ItemList v-for="person in persons" :key="person.id" :person="person" @removeItem="removeItemArray"/>
-            <li v-if="persons.length == 0">Não há dados</li>
+            <ItemList v-for="person in persons" :key="person.id" :person="person"/>
+            <li v-if="persons == 0">No data</li>
         </ul>
     </section>
 </template>
 
 <script>
 import ItemList from './ItemList.vue'
+import {mapState} from 'vuex'
+
 export default {
     name: 'list-itens',
-    props: {
-        persons: {
-            type: Array,
-            required: true                  
-        }
-    },
     components: {ItemList},
-    methods: {
-        removeItemArray(person){
-            this.persons.splice(this.persons.indexOf(person),1)
-        }
+    computed: {
+        ...mapState({
+            persons: 'persons'
+        })
     }
 }
 </script>

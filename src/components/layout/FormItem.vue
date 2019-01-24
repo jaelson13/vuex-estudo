@@ -7,6 +7,8 @@
 
 <script>
 import uuidv1 from 'uuid'
+import {mapActions} from 'vuex'
+
 export default {
     name: 'form-item',
     data(){
@@ -15,9 +17,12 @@ export default {
         }
     },
     methods: {
+        ...mapActions([
+            'addPerson'
+        ]),
         sendPerson(){
             if(this.name){
-                this.$emit('addPerson', {id: uuidv1(), name: this.name})
+                this.addPerson({id: uuidv1(), name: this.name})
                 this.name = ''
             }else{
                 alert("The name field cannot be empty!!")
